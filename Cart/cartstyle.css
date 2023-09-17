@@ -1,0 +1,524 @@
+.quantityButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2em 0.1em;
+    background-color: var(--HeaderColor);
+    border-radius: 10px;
+    user-select: none;
+    width: 60%;
+    text-align: center;
+    margin:auto; /*https://www.freecodecamp.org/news/how-to-center-anything-with-css-align-a-div-text-and-more/*/
+}
+
+.quantityButton span{
+    text-align: center;
+    font-weight: bolder;
+    padding: 0em 0.4em;
+}
+.quantityButton .minus{
+    border-right: 2px solid white;
+    cursor: pointer;
+}
+.quantityButton .plus{
+    border-left: 2px solid white;
+    cursor: pointer;
+}
+
+/*********** cartChooseSection **********/
+#cartChooseSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:2em;
+    padding: 2em 0em 0em;
+}
+#cartChooseSection h1{
+    font-size: 3em;
+    color: var(--textColor);
+}
+#cartChooseSection .select{
+    padding: 0.4em 1em;
+    background-color: var(--textColor);
+    width: 200px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#cartChooseSection .select span{
+    font-size: 2em;
+    color: var(--HeaderColor);
+}
+#cartChooseSection .caret{
+    background-color: var(--textColor);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--HeaderColor);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s;
+    width: 0;
+    height: 0;
+}
+#cartChooseSection .caret-rotate{
+    transform: rotate(180deg);
+    transition: all 0.3s;
+}
+#cartChooseSection .dropdownMenu {
+    position: relative;
+}
+#cartChooseSection .menu{
+    display: none;
+}
+#cartChooseSection .dropdownMenu .menu-open{
+    position: absolute;
+    display: block;
+    list-style: none;
+    padding: 0.4em 1em;
+    width: 200px;
+    background-color: var(--textColor);
+    border-radius: 10px;
+}
+#cartChooseSection .menu li{
+color: var(--HeaderColor);
+letter-spacing: 0.05em;
+padding: 0.1em 0.5em;
+font-size: 1.5em;
+border-bottom: 2px solid var(--HeaderColor);
+cursor: pointer;
+user-select: none;
+}
+#cartChooseSection .menu li:hover{
+    color: var(--textColor);
+    background-color: var(--HeaderColor);
+}
+/********************* carts********************/
+
+.cartSection{
+    padding: 2em 3em;
+}
+.cartSection table{
+    width: 100%;
+    border-collapse: collapse ;
+    table-layout: fixed; /*Tip: The main benefit of table-layout: fixed; is that the table renders much faster. On large tables, 
+    users will not see any part of the table until the browser has rendered the whole table. 
+    So, if you use table-layout: fixed, 
+    users will see the top of the table while the browser loads and renders rest of the table. 
+    This gives the impression that the page loads a lot quicker!
+    */
+}
+.cartSection table thead{
+    border: 3px solid var(--textColor);
+    border-left: none;
+    border-right: none;
+}
+.cartSection table thead td{
+    padding: 1em;
+    font-size: 1.4em;
+    color: var(--iconColor);
+    white-space: nowrap;
+    text-align: center;
+}
+
+.cartSection table tbody tr{ 
+    border-bottom: 4px solid var(--HeaderColor) ;
+}
+
+.cartSection table tbody td{
+    white-space: nowrap;
+    text-align: center;
+    padding: 0.2em;
+    font-size: 1.3em;
+    color: var(--textColor);
+}
+
+.cartSection table td:nth-child(1){
+    width: 10%;
+}
+.cartSection table td:nth-child(2){
+    width: 30%;
+}
+.cartSection table td:nth-child(3),
+.cartSection table td:nth-child(4),
+.cartSection table td:nth-child(5),
+.cartSection table td:nth-child(6)
+{
+    width: 20%;
+}
+
+.cartSection table img{
+    padding: 0.5em 0em;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.cartSection table i{
+    color: var(--textColor);
+    cursor: pointer;
+}
+
+
+
+.cartTable-show{
+    display: block;
+}
+.cartTable{
+    display: none;
+}
+.wishTable-show{
+    display: block;
+}
+.wishTable{
+    display: none;
+}
+
+
+/****************** cart-add section ****************/
+#cart-add{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap:2em;
+    padding: 1em 4em ;
+}
+#coupon{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+#coupon h3,
+#subtotal h3{
+    font-size: 2em;
+    color:var(--iconColor);
+}
+
+#coupon div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:0.5em;
+}
+#coupon input{
+    padding: 1em;
+    width: 300px;
+    outline: none;
+    color: var(--iconColor);
+}
+#cart-add button,
+#submitBtn{
+    padding: 1em 2em;
+    border:none;
+    background-color:var(--iconColor);
+    color: var(--HeaderColor);
+    font-weight: bolder;
+    letter-spacing: 0.05em;
+    cursor:pointer;
+}
+
+#subtotal{
+    border: 3px solid var(--HeaderColor);
+    padding: 1em;
+    width: 500px;
+}
+
+#subtotal table{
+    width: 100%;
+    border-collapse: collapse ;
+    table-layout: fixed; 
+    margin: 0.7em 0em;
+}
+
+#subtotal table tr{
+    border-bottom: 1px solid var(--iconColor);
+    padding: 1em 0em;
+}
+#subtotal table td{
+    font-size: 1.5em;
+    color:var(--textColor);
+}
+#totalRow td{
+    color:var(--purpleColor) !important; 
+    font-size: 2em !important;
+}
+
+
+/************** media queries ************/
+@media (max-width:770px){
+#cartChooseSection h1{
+    font-size: 2em;
+}
+.cartSection{
+    padding: 1em 2em;
+}
+}
+
+@media (max-width:670px){
+
+    .cartSection{
+        padding: 1em 1em;
+    }
+    .cartSection table thead td{
+        padding: 0.4em;
+        font-size: 1.4em;
+    }
+    .cartSection table thead td:nth-child(1){
+        padding: 0.4em;
+        font-size: 1em ;
+    }
+    .cartSection table td:nth-child(1){
+        width: 7%;
+    }
+    .cartSection table td:nth-child(2){
+        width: 40%;
+    }
+    .cartSection table td:nth-child(3),
+    .cartSection table td:nth-child(4),
+    .cartSection table td:nth-child(5),
+    .cartSection table td:nth-child(6)
+    {
+        width: 20%;
+    }
+    
+    .cartSection table img{
+        width: 150px;
+        height: 150px;
+    }
+    .quantityButton{
+        width: 100%;
+    }
+    #cart-add {
+        gap: 2em;
+        padding: 1em 3em;
+    }
+
+}
+    
+    
+@media (max-width:500px){
+
+    .cartSection{
+        padding: 1em 0.5em;
+    }
+    .cartSection table thead td{
+        padding: 0.2em;
+        font-size: 1em;
+    }
+    .cartSection table thead td:nth-child(1){
+        padding: 0.1em;
+        font-size: 0.8em ;
+    }
+    .cartSection table tbody td{
+        font-size: 0.9em ;
+    }
+    .cartSection table td:nth-child(1){
+        width: 5%;
+    }
+    .cartSection table td:nth-child(2){
+        width: 20%;
+    }
+    .cartSection table td:nth-child(3),
+    .cartSection table td:nth-child(4),
+    .cartSection table td:nth-child(5),
+    .cartSection table td:nth-child(6)
+    {
+        width: 12%;
+    }
+    
+    .cartSection table img{
+        width: 90px;
+        height: 120px;
+    }
+    .quantityButton{
+        width: 100%;
+    }
+    #cart-add {
+        gap: 1.5em;
+        padding: 1em 2em;
+    }
+
+    #coupon input {
+        width: 190px;
+    }
+
+    #cartChooseSection h1{
+        font-size: 2em;
+    }
+    #cartChooseSection .select{
+        padding: 0.4em 0.4em;
+        width: 130px;
+    }
+    #cartChooseSection .select span{
+        font-size: 1.5em;
+    }
+
+    #cartChooseSection .dropdownMenu .menu-open{
+        padding: 0.4em 0.4em;
+        width: 130px;
+    }
+    #cartChooseSection .menu li{
+    font-size: 1.2em;
+    }
+
+}
+
+
+
+
+/******************************** payment page ********************************/
+#cart-add2{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap:2em;
+    padding: 1em 4em ;
+}
+#paymentSection{
+    background-color: white;
+    width: 800px;
+    padding: 0.2em 1em;
+}
+#paymentSection #logoPart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1em;
+}
+#paymentSection #logoImg{
+    font-size: 2em;
+}
+#paymentSection #logoText{
+    font-size: 2em;
+}
+#paymentSection #logoPart i,
+#paymentSection #logoPart h2{
+    font-size: 1.5em;
+    color:var(--iconColor);
+}
+
+#paymentDiv {
+    margin-top: 1em;
+    padding: 0.1em 2em ;
+    border: 2px solid var(--HeaderColor);
+    display: flex;
+    flex-direction: column;
+}
+
+#paymentForm{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap:0.5em;
+}
+
+#paymentForm .halfDiv{
+    width: 40%;
+}
+#paymentForm .fullDiv{
+    width: 100%;
+}
+
+#paymentDiv h1{
+    padding-top: 0.5em;
+    font-size: 2em;
+    letter-spacing: 0.05em;
+    color:var(--textColor);
+}
+#paymentDiv label{
+    font-size: 1.5em;
+    color:var(--purpleColor);
+}
+#paymentDiv input[type=text]{
+    width: 100%;
+    height: 30px;
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    color:var(--purpleColor);
+}
+#payMethodSection{
+    padding-top: 0.5em;
+    width: 100%;
+}
+#onlineSection{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap:0.5em;
+    width: 100%;
+    margin-bottom: 2em;
+}
+#onlineSection img{
+    width:200px;
+}
+#onlineSection h3{
+    padding-top: 1em;
+    color: var(--textColor);
+}
+
+#submitBtn{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+}
+
+/********* media queries ********/
+@media (max-width:1281px){
+    #cart-add2{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap:1em;
+        padding: 1em 2em ;
+    }
+    #paymentSection{
+        width: 700px;
+        padding: 0.2em 1em;
+    }
+    
+}
+@media (max-width:1250px){
+    #cart-add2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap:1em;
+        padding: 1em 1em ;
+    }
+    #paymentSection{
+        width: 95%;
+        padding: 0.2em 1em;
+    }
+    
+}
+
+@media (max-width:530px){
+    #cart-add2{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap:1em;
+        padding: 1em 0.5em ;
+    }
+    #paymentSection{
+        width: 100%;
+        padding: 0.2em 0.5em;
+    }
+    #paymentForm .halfDiv {
+        width: 80%;
+    }
+    #subtotal {
+        border: 3px solid var(--HeaderColor);
+        padding: 1em;
+        width: 100%;
+    }
+}

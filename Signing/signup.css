@@ -1,0 +1,190 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+
+}
+:root{
+    --HeaderColor :  #f2f2ea ; 
+    --iconColor :  #EA2C62 ;
+    --textColor : #39B5E0;
+    --purpleColor : rgb(78, 8, 78);
+    --darkColor :rgb(17, 84, 17);
+    --fontSize : 1.8em;
+
+}
+
+html{
+    min-height: 100%;
+
+}
+
+body{
+    font-family: 'Bebas Neue', sans-serif;
+    height:100%;
+}
+.bg{
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0,0,0, 0.7),
+        rgba(102, 52, 92, 0.7)
+    ), url(images/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 20% center;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    /* Preserve aspet ratio */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+.bg img{
+    position: RELATIVE;
+    width: 400px;
+    height: 250px;
+    top: 0%;
+    left: 0%;
+}
+
+
+/*************form ***********/
+.signUp_form{
+    background-color: var(--HeaderColor);
+    width: fit-content;
+    height: fit-content;
+    padding: 1em;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 13px 10px rgba(0,0,0, 0.4);
+    width: 40%;
+    height: 400px;
+}
+.signUp_form form{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.signUp_form h1{
+    text-align: center;
+    font-size: 3em;
+    color: var(--iconColor);
+}
+.input_box{
+    position: relative;
+    margin-top: 1em;
+    width: 100%;
+    height: 40px;
+}
+.input_box input{
+    width: 100%;
+    height: 100%;
+    border:none;
+    outline: none;
+    border-bottom: 2px solid var(--iconColor);
+    padding-left: 3em;
+    transition: all 0.5s;
+    color:var(--purpleColor);
+
+}
+.input_box input:focus{
+    border-bottom: 2px solid var(--purpleColor);
+    transition: all 0.5s;
+}
+
+.input_box i{
+    position: absolute;
+    top:30%;
+    left: 3%;
+    color: var(--iconColor);
+}
+.input_box .pass_show{
+    position: absolute;
+    top:30%;
+    left:92% ;
+    cursor: pointer;
+}
+.input_box input:focus+i{
+    color:var(--purpleColor);
+    transition: all 0.5s;
+}
+.signUp_form button{
+    margin: 1em 0em;
+    padding: 0.6em;
+    width: 100%;
+    background-color: white;
+    color:var(--iconColor);
+    font-size: 1em;
+    font-weight: bold;
+    cursor:pointer;
+    border: 2px solid var(--iconColor);
+    transition: all 0.2s;
+
+}
+.signUp_form button:hover{
+    background-color:var(--iconColor);
+    color:white;
+    transition: all 0.2s;
+}
+
+.login_signup{
+    letter-spacing: 0.05em;
+    color:var(--purpleColor);
+}
+.signUp_form a{
+    letter-spacing: 0.05em;
+    color:var(--textColor);
+}
+.signUp_form a:hover{
+    color:var(--purpleColor);
+}
+
+
+/*********for login Form*******/
+.option-field{
+    margin-top: 0.5em;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.option-field label{
+    color:var(--purpleColor);
+}
+
+
+/**************** media quriies **************/
+@media (max-width:920px){
+    .bg{
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+    }
+    .signUp_form{
+        width: 70%;
+    }
+    .option-field{
+        width: 90%;
+    }
+}
+@media (max-width:400px){
+    .bg img{
+        width: 300px;
+    }
+    .signUp_form{
+        width: 80%;
+        margin-bottom: 1em;
+    }
+    .option-field{
+        width: 90%;
+    }
+}

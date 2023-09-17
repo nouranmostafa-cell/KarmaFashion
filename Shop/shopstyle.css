@@ -1,0 +1,644 @@
+
+#shopBanner{
+    background-image: url(images/banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 2em 0em 4em;
+    overflow: hidden;
+    position: relative;
+}
+
+#wrapper{
+    z-index: 0 ;
+}
+#bannerImg{
+    position: relative;
+    background-image: url(images/bannerImg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 271px;
+    min-height: 42vh;
+    padding: 0 4em;
+
+}
+
+#circle{   /*https://www.youtube.com/watch?v=72N-L_ylcho*/
+    position: absolute;
+    width: 271px;
+    min-height: 42vh;
+    z-index: -1;
+    left: 11px;
+    top: 0px;
+}
+#circle::before{
+    content: "";
+    position: absolute;
+    width: 299px;
+    left: -25px;
+    min-height: inherit;
+    background-image: conic-gradient(transparent, var(--purpleColor) 180deg, transparent 350deg);
+    border-radius: 200px;
+    top: -11px;
+    animation: animate 4s linear infinite;
+}
+#circle::after{
+    content: "";
+    position: absolute;
+    width: 299px;
+    left: -25px;
+    min-height: inherit;
+    background-image: conic-gradient(transparent, transparent , var(--textColor) 320deg);
+    border-radius: 200px;
+    top: -11px;
+    animation: animate 4s linear infinite;
+} 
+
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+} 
+
+/************** pagination ***********/
+#pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1em;
+}
+#pagination a{
+    text-decoration: none;
+    color:var(--iconColor);
+    font-size: 1.5em;
+    padding: 0.5em;
+    background-color: var(--HeaderColor);
+    border: 0.5px solid var(--iconColor);
+    border-radius: 10px;
+}
+#pagination a:hover{
+    transform: scale(1.3);
+    background-color:var(--iconColor);
+    color: var(--HeaderColor);
+    transition: all 0.2s;
+}
+
+/********************** product details ******************/
+
+#proDetails{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 50vh;
+    padding: 0em 3em;
+    justify-content: space-between;
+}
+#proDetails .single-pro-img{
+    display: flex;
+    flex-direction: column;
+    width: 37%;
+    min-height: 40vh;
+}
+#proDetails #mainImg{
+    width: 100%;
+    height: 60vh;
+}
+#proDetails .single-pro-img .small-img-group{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 30vh;
+    gap:0.2em;
+    padding-top: 0.4em;
+}
+.small-img-col{
+    flex-basis: 24%;
+    cursor: pointer;
+}
+.small-img {
+    width: 100%;
+    height: 20vh;
+    border: 3px solid var(--HeaderColor);
+    border-radius: 10px;
+}
+.single-pro-details{
+    width: 60%;
+    padding-top: 4em;
+    padding-left: 2em;
+    position: relative;
+}
+
+#proType{
+    font-size: 1.7em;
+    color: var(--purpleColor);
+}
+#proName{
+    font-size: 2.2em;
+    color: var(--textColor);
+}
+#proPrice{
+    font-size: 2.2em;
+    color: var(--iconColor);
+}
+
+.single-pro-details select{
+    display: block;
+    margin:0.4em;
+    padding: 0.4em;
+    color: var(--textColor);
+    border: 2px solid var(--textColor);
+    outline: transparent;
+}
+.single-pro-details select:focus{
+    outline: transparent;
+}
+.proNum{
+    margin-top: 1em;
+    padding: 0.5em;
+    color: var(--textColor);
+    border: 2px solid var(--textColor);
+    border-radius: 5px;
+    outline: transparent;
+}
+.single-pro-details button{
+    margin-left: 0.5em;
+    margin-top: 0.1em;
+    padding: 0.5em 1em;
+    color: var(--textColor);
+    font-weight: bolder;
+    border: 2px solid var(--textColor);
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.single-pro-details button:hover{
+    color: var(--iconColor);
+}
+.single-pro-details h4{
+    padding-top: 1em;
+    font-size: 1.5em;
+    color: var(--iconColor);
+}
+.single-pro-details span{
+    padding-top: 1em;
+    font-size: 1.3em;
+    color: var(--purpleColor);
+}
+
+.single-pro-details p {
+    padding-top: 0.5em;
+    color:var(--textColor);
+    font-size: 1.2em;
+}
+
+/*******Reviews part******/
+#reviewsSection{
+    height: fit-content;
+    position: absolute;
+    right: -3em;
+    top:10%;
+}
+#reviewsBtn{
+    width:50px;
+    height: 180px;
+    background-color: var(--iconColor);
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    position: relative;
+    cursor: pointer;
+    z-index: 0;
+}
+#reviewsBtn h1{
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    transform: rotate(-90deg);
+    text-align: center;
+    position: relative;
+    top: 50%;
+    color: var(--HeaderColor);
+}
+#reviewPage[data-show=false]{
+    position: fixed;
+    background-color: var(--HeaderColor);
+    inset: 0 0 0 70%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3em;
+    overflow-y:scroll;
+    transition: all 0.5s;
+    transform: translateX(100%);
+
+}
+#reviewPage[data-show=true]{
+    position: fixed;
+    background-color: var(--HeaderColor);
+    inset: 0 0 0 70%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3em;
+    overflow-y:scroll;
+    transform: translateX(0%);
+    transition: all 0.5s;
+}
+#reviewPage a{
+    position: absolute;
+    top:3%;
+    right:4%;
+    cursor: pointer;
+}
+#reviewPage h1{
+    font-size: 3em;
+    font-weight: bolder;
+    color:var(--iconColor);
+}
+#reviewPage h5{
+    font-size: 1.5em;
+    color:var(--textColor);
+}
+#reviewAddBtn {
+    margin-top: 0.5em;
+    padding: 0.5em 1em;
+    background-color: var(--iconColor);
+    border-radius: 30px;
+    cursor: pointer;
+}
+#reviewAddBtn i,
+#reviewAddBtn span {
+    color: var(--HeaderColor);
+}
+
+/****user review section*****/
+#reviewWrite[data-show=false]{
+    position: relative;
+    padding:0.5em 1em;
+    width: 100%;
+    max-height: 1px;
+    overflow: hidden;
+    opacity: 0.2;
+    top:-20%;
+    transition: all 0.5s;
+}
+#reviewWrite[data-show=true]{
+    position: relative;
+    padding:0.5em 1em;
+    width: 100%;
+    max-height: 300px;
+    opacity: 1;
+    top:0;
+    transition: all 0.5s;
+}
+#reviewWrite form{
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:0.5em;
+}
+.userReviewStars{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    gap:0.5em;
+}
+.userReviewStars input{
+    display: none;
+}
+.userReviewStars label{
+    opacity: 0.2;
+    font-size: 1.5em;
+}
+.userReviewStars input:not(:checked) ~ label:hover {
+    opacity: 1;
+    background: #D4AF37;
+    background:linear-gradient(to top, #BF953F, #FCF6BA, #d59916, #FBF5B7, #AA771C);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    transition: all 0.2s;
+}
+.userReviewStars input:not(:checked) ~ label:hover ~ label {
+    opacity: 1;
+    background: #D4AF37;
+    background:linear-gradient(to top, #BF953F, #FCF6BA, #d59916, #FBF5B7, #AA771C);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    transition: all 0.2s;
+}
+.userReviewStars input:checked ~ label{
+    opacity: 1;
+    background: #D4AF37;
+    background:linear-gradient(to top, #BF953F, #FCF6BA, #d59916, #FBF5B7, #AA771C);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    transition: all 0.2s;
+}
+
+
+#reviewWrite input[type=text]{
+    width: 80%;
+    padding: 0.5em;
+}
+#reviewWrite textarea{
+    width: 80%;
+    padding:1em;
+}
+#reviewWrite #reviewSubmit{
+    padding: 0.4em;
+    background-color: var(--iconColor);
+    outline: none;
+    border: none;
+    color:var(--HeaderColor);
+    font-size:1.5em;
+    border-radius:10px;
+    cursor: pointer;
+}
+
+
+
+/*reviews box collection*/
+.reviews-box-collection{
+    margin-top: 1em;
+    width: 100%;
+    border-top: 2px solid var(--iconColor);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+
+}
+
+.reviews-box{
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+    border-bottom: 4px solid white;
+    width: 100%;
+    padding: 1em;
+}
+
+.box-top{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.box-top h2{
+    color: var(--purpleColor);
+    font-size: 1.5em;
+}
+
+
+@media(max-width:1052px){
+    #reviewPage h5 {
+        font-size: 1.2em;
+    }
+    #reviewWrite input[type=text]{
+        width: 90%;
+        padding: 0.5em;
+    }
+    #reviewWrite textarea{
+        width: 90%;
+        padding:1em;
+    }
+}
+
+@media(max-width:980px){
+    #reviewPage[data-show=false]{
+        inset: 0 0 0 50%;
+        padding-top: 3em;
+    }
+    #reviewPage[data-show=true]{
+        inset: 0 0 0 50%;
+        padding-top: 3em;
+    }
+    #reviewPage h5 {
+        font-size: 2em;
+        padding: 0em 0.5em;
+    }
+    .box-top h2 {
+        color: var(--purpleColor);
+        font-size: 1.8em;
+    }
+  
+}
+
+@media(max-width:650px){
+    #reviewsSection{
+        right: -1em;
+    }
+    #reviewPage[data-show=false]{
+        inset: 0 0 0 20%;
+        padding-top: 3em;
+    }
+    #reviewPage[data-show=true]{
+        inset: 0 0 0 20%;
+        padding-top: 3em;
+    }
+    #reviewPage h5 {
+        font-size: 2em;
+        padding: 0em 0.5em;
+    }
+    .box-top h2 {
+        color: var(--purpleColor);
+        font-size: 1.8em;
+    }
+}
+
+
+/***************media Query for sproduct  **************/
+
+@media (max-width:940px){
+    
+#proDetails{
+    width: 100%;
+    min-height: 40vh;
+    margin-bottom: 2em;
+}
+#proDetails .single-pro-img{
+    width: 100%;
+    min-height: 40vh;
+}
+#proDetails #mainImg{
+    width: 100%;
+    height: 50vh;
+}
+#proDetails .single-pro-img .small-img-group{
+    min-height: 4vh;
+}
+.single-pro-details{
+    width: 100%;
+    padding-top: 2em;
+}
+#proType{
+    font-size: 2em;
+    color: var(--purpleColor);
+}
+#proName{
+    font-size: 3em;
+    color: var(--textColor);
+}
+#proPrice{
+    font-size: 2em;
+    color: var(--iconColor);
+}
+
+.single-pro-details select{
+    padding: 1em;
+    font-size: 1em;
+}
+
+.proNum{
+    padding: 0.5em;
+    font-size: 1.2em;
+}
+button{
+    padding: 0.5em 1em;
+    font-size: 1.2em;
+}
+
+.single-pro-details h4{
+    font-size: 3em;
+}
+.single-pro-details span{
+    font-size: 2em;
+}
+.single-pro-details p span{
+    font-size: 1.2em;
+}
+.single-pro-details p {
+    font-size: 2em;
+}
+
+}
+
+@media (max-width:650px){
+    
+    #proDetails{
+        padding: 0em 1em;
+    }
+    .single-pro-details{
+        padding-top: 1em;
+        padding-left: 0.5em;
+
+    }
+    .single-pro-details select{
+        padding: 1em;
+        font-size: 1em;
+    }
+    .proNum{
+        display: block;
+        margin:0.5em;
+        padding: 0.5em;
+        font-size: 1em;
+    }
+    button{
+        padding: 0.5em 0.5em;
+        font-size: 1.2em;
+    }
+    .single-pro-details h4{
+        padding-top: 0.5em;
+        font-size: 2.4em;
+    }
+    .single-pro-details >span {
+        font-size: 1.5em;
+    }
+    
+}
+    
+
+/************ mediaQueries for banner************/
+
+
+@media (max-width:1281px){
+   
+    #bannerImg{
+        width: 314px;
+        min-height: 20vh;
+        height: 312px;
+    }
+    
+    #circle{   /*https://www.youtube.com/watch?v=72N-L_ylcho*/
+        position: absolute;
+        width: 335px;
+        height: 300px;
+        min-height: inherit;
+        left: -5%;
+        top: -5%;
+    }
+    #circle::before{
+        width: 345px;
+        height: 333px;
+        min-height: inherit;
+        left:0px;
+        top:0px;
+    }
+    #circle::after{
+        width: 345px;
+        height: 333px;
+        min-height: inherit;
+        left:0px;
+        top:0px;
+    } 
+    
+        
+}
+
+@media (max-width:930px) and ( min-width:810px){
+   
+    #shopBanner{
+        max-width: 100%;
+        min-height: 30vh;
+    }   
+}
+
+@media (max-width:700px){
+
+    #shopBanner{
+        max-width: 100%;
+        min-height: 40vh;
+    }   
+
+    #bannerImg{
+        width: 200px;
+        min-height: 20vh;
+        height: 200px;
+        left:10px;
+    }
+    
+    #circle{   /*https://www.youtube.com/watch?v=72N-L_ylcho*/
+        width: 235px;
+        height: 235px;
+        left:0%;
+        top:-8%;
+    }
+    #circle::before{
+        width: 235px;
+        height: 235px;
+    }
+    #circle::after{
+        width: 235px;
+        height: 235px;
+    } 
+    
+    #bannerLeftPart h2{
+        padding-left: 1.2em;
+    }
+
+    #bannerLeftPart h4{
+        padding-left: 2em;
+    }
+
+
+}

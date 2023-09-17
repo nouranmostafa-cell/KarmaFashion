@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+
+    <link rel="icon" href="../images/logo.svg">
+    <link rel="stylesheet"href="signup.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>     <!--for gasp animation-->
+    <script src="signupCode.js"defer></script>   
+
+    <!--for fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">    <!---for icons-->
+
+    <link href="../assets/css/fontawesome.css" rel="stylesheet">
+    <link href="../assets/css/brands.css" rel="stylesheet">
+    <link href="../assets/css/solid.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="bg">   
+        <img src="images/text.png"alt="">
+        <div class="signUp_form"> <!--https://www.youtube.com/watch?v=etsPyHLON7g-->
+            <form action="#">
+                <h1>Log In</h1>
+                <div class="input_box">
+                    <input type="email"placeholder="Enter your E-mail" required>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="input_box">
+                    <input type="password"placeholder="Enter your Password" required>
+                    <i class="fa-solid fa-lock"></i>
+                    <i class="fa-solid fa-eye-slash pass_show"onclick="showPass(this)"></i>
+                </div>
+                <div class="option-field">
+                    <span class="checkbox">
+                        <input type="checkbox"id="check">
+                        <label for="check">Remember Me</label>
+                    </span>
+                    <a href="#"class="forget_pw">Forget Password</a>
+                </div>
+                <button>Log In Now</button>
+                <div class="login_signup">Don't have An account? <a href="signup.html">Sign Up</a></div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
