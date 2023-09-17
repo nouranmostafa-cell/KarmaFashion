@@ -24,11 +24,11 @@ let cartIcon = document.getElementById("cartLogo");
 
 if(signed ==true){
     cartIcon.className="fa-solid fa-basket-shopping";
-    cartIcon.parentNode.href ="../Cart/cart.html";
+    cartIcon.parentNode.href ="../KarmaFashion/Cart/cart.html";
 }
 else{
     cartIcon.className="fa-solid fa-user-plus";
-    cartIcon.parentNode.href ="../Signing/signup.html";
+    cartIcon.parentNode.href ="../KarmaFashion/Signing/signup.html";
 }
 
 /********* mobile nav bar ********/
