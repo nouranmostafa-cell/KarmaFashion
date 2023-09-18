@@ -12,8 +12,8 @@ function preload_image(im_url) {
     img.src = im_url;
 }
 preload_image('images/bannerImgs/Layer 1.png');
-preload_image('images/bannerImgs/Layer 2.png');
 preload_image('images/bannerImgs/Layer 3.png');
+preload_image('images/bannerImgs/Layer 2.png');
 
 
 /*********** get the name of pages in js to activate/deactivate some code  *******/
