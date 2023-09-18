@@ -1070,11 +1070,20 @@ footer .col button:hover{
         display: flex;
         width: 80%;
     }
+
+    
+    #bannerTxtAnim ul li {
+        position: relative;
+        top:-5px;
+        animation: slide 6s steps(4) infinite;
+    }
+
     @keyframes slide{
         100%{
             top : -390%;  /*-425%*/
         }
     }
+
     
 }
 
