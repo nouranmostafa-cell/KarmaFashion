@@ -6,13 +6,13 @@ window.onload = ()=>{
 }
 
 /********* preload images of banner********/
-function preload_image(im_url) {
-    let img = new Image();
-    img.src = im_url;
-}
-preload_image('images/bannerImgs/Layer 1.png');
-preload_image('images/bannerImgs/Layer 2.png');
-preload_image('images/bannerImgs/Layer 3.png');
+// function preload_image(im_url) {
+//     let img = new Image();
+//     img.src = im_url;
+// }
+// preload_image('images/bannerImgs/Layer 1.png');
+// preload_image('images/bannerImgs/Layer 2.png');
+// preload_image('images/bannerImgs/Layer 3.png');
 
 
 /*********** get the name of pages in js to activate/deactivate some code  *******/
