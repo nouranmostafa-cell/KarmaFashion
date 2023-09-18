@@ -1,5 +1,8 @@
 
+console.log('hi preload');
+
 window.onload = ()=>{
+    console.log('hi load');
     bannerAnim.restart();
     deliveryAnim.restart();
     deliveryCar.restart();
