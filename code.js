@@ -6,16 +6,7 @@ window.onload = ()=>{
 }
 
 
-/******************* run animations  ***************/
-bannerAnim.restart();
-deliveryAnim.restart();
-deliveryCar.restart();
-onlineAnim.restart();
-moneyAnim.restart();
-moneyAnimYoyo.restart();
-sellAnim.restart();
-promoAnim.restart();
-supportAnim.restart();
+
 
 
 /*********** get the name of pages in js to activate/deactivate some code  *******/
@@ -237,3 +228,15 @@ popAlert.addEventListener("animationend", () => {  //https://developer.mozilla.o
 
 
 
+
+
+/******************* run animations  ***************/
+bannerAnim.restart();
+deliveryAnim.restart();
+deliveryCar.restart();
+onlineAnim.restart();
+moneyAnim.restart();
+moneyAnimYoyo.restart();
+sellAnim.restart();
+promoAnim.restart();
+supportAnim.restart();
