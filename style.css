@@ -1109,9 +1109,11 @@ footer .col button:hover{
     #navList a{
         font-size: 2em;
     }
-    #navList .active::after{
+    #navList .active::after,
+    #navList a:hover:after{
         top:45px;
     }
+
     
     #mobile{
         display: inline-block;
@@ -1165,7 +1167,7 @@ footer .col button:hover{
 
 @keyframes slide{
     100%{
-        top : -425%;  /*-425%*/
+        top : -405%;  /*-425%*/
     }
 }
 
