@@ -3,16 +3,20 @@ console.log('hi preload');
 
 window.onload = ()=>{
     console.log('hi load');
-    bannerAnim.restart();
-    deliveryAnim.restart();
-    deliveryCar.restart();
-    onlineAnim.restart();
-    moneyAnim.restart();
-    moneyAnimYoyo.restart();
-    sellAnim.restart();
-    promoAnim.restart();
-    supportAnim.restart();
 }
+
+
+/******************* run animations  ***************/
+bannerAnim.restart();
+deliveryAnim.restart();
+deliveryCar.restart();
+onlineAnim.restart();
+moneyAnim.restart();
+moneyAnimYoyo.restart();
+sellAnim.restart();
+promoAnim.restart();
+supportAnim.restart();
+
 
 /*********** get the name of pages in js to activate/deactivate some code  *******/
 let pageName = document.getElementsByTagName('title')[0].innerHTML;
