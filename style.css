@@ -230,6 +230,7 @@ header{
 #bannerLeftPart h4{
     color: var(--iconColor);
     font-size: 1.5em;
+    padding-top: 0.5em;
     letter-spacing: 0.1em;
 }
 #bannerLeftPart h2{
@@ -1069,6 +1070,12 @@ footer .col button:hover{
         display: flex;
         width: 80%;
     }
+    @keyframes slide{
+        100%{
+            top : -390%;  /*-425%*/
+        }
+    }
+    
 }
 
 @media (max-width:820px) {
