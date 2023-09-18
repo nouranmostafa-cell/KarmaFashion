@@ -24,7 +24,12 @@ let cartIcon = document.getElementById("cartLogo");
 
 if(signed ==true){
     cartIcon.className="fa-solid fa-basket-shopping";
-    cartIcon.parentNode.href ="../KarmaFashion/Cart/cart.html";
+    if(pageName=='Karma Fashion'){
+        cartIcon.parentNode.href ="../KarmaFashion/Cart/cart.html";
+    }
+    else{
+        cartIcon.parentNode.href ="../Cart/cart.html";
+    }
 }
 else{
     cartIcon.className="fa-solid fa-user-plus";
