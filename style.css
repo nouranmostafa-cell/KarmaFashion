@@ -1074,7 +1074,7 @@ footer .col button:hover{
     
     #bannerTxtAnim ul li {
         position: relative;
-        top:5px;
+        top:10px;
         animation: slide 6s steps(4) infinite;
     }
 
