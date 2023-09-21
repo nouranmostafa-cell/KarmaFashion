@@ -222,7 +222,7 @@ if(pageName=='Karma Fashion'){
 }
 
 
-if( signed ==true){
+if( signed ==true || signedState){
     function addToCart(){
         popAlert.getElementsByTagName('p')[0].innerHTML='this item has been added to cart <span>successfully!</span>';
         popAlert.setAttribute("pop-show",true);
