@@ -21,26 +21,6 @@ let pageName = document.getElementsByTagName('title')[0].innerHTML;
 console.log(pageName);
 
 
-
-/**************  nav bar change icons if signed in  ************/
-
-let signed = true;
-let cartIcon = document.getElementById("cartLogo");
-
-if(signed ==true){
-    cartIcon.className="fa-solid fa-basket-shopping";
-    if(pageName=='Karma Fashion'){
-        cartIcon.parentNode.href ="../KarmaFashion/Cart/cart.html";
-    }
-    else{
-        cartIcon.parentNode.href ="../Cart/cart.html";
-    }
-}
-else{
-    cartIcon.className="fa-solid fa-user-plus";
-    cartIcon.parentNode.href ="../KarmaFashion/Signing/signup.html";
-}
-
 /********* mobile nav bar ********/
 let navRightbar = document.getElementById("navRightpart");
 let mobileIcon = document.getElementById("mobileIcon");
@@ -54,6 +34,41 @@ function showNav(){
         navRightbar.setAttribute("data-visible",false);
         mobileIcon.firstElementChild.className = "fas fa-bars fa-xl";
     }
+}
+
+
+/**************  nav bar change icons if signed in  ************/
+
+let signed = false;
+let signedState = sessionStorage.getItem("signState");
+console.log("signedState"+signedState);
+let cartIcon = document.getElementById("cartLogo");
+
+if(signed ==true || signedState){
+    cartIcon.className="fa-solid fa-basket-shopping";
+    mobileIcon.parentNode.getElementsByTagName("i")[0].className="fa-solid fa-basket-shopping";
+
+    if(pageName=='Karma Fashion'){
+        mobileIcon.parentNode.getElementsByTagName("a")[0].href ="../KarmaFashion/Cart/cart.html";
+        cartIcon.parentNode.href ="../KarmaFashion/Cart/cart.html";
+    }
+    else{
+        mobileIcon.parentNode.getElementsByTagName("a")[0].href ="../Cart/cart.html";
+        cartIcon.parentNode.href ="../Cart/cart.html";
+    }
+}
+else{
+    cartIcon.className="fa-solid fa-user-plus";
+    mobileIcon.parentNode.getElementsByTagName("i")[0].className="fa-solid fa-user-plus";
+    if(pageName=='Karma Fashion'){
+        mobileIcon.parentNode.getElementsByTagName("a")[0].href ="../KarmaFashion/Signing/signup.html";
+        cartIcon.parentNode.href ="../KarmaFashion/Signing/signup.html";
+    }
+    else{
+        mobileIcon.parentNode.getElementsByTagName("a")[0].href ="../Signing/signup.html";
+        cartIcon.parentNode.href ="../Signing/signup.html";
+    }
+    
 }
 
 

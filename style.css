@@ -1125,6 +1125,9 @@ footer .col button:hover{
     #navList a{
         font-size: 2em;
     }
+    #navList a::after{
+        top:45px;
+    }
     #navList .active::after,
     #navList a:hover:after{
         top:45px;

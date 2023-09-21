@@ -16,3 +16,8 @@ function showPass(element){
     }
 }
 
+function sign(){
+
+    sessionStorage.setItem("signState","true");
+    window.location.href="../index.html";
+}
