@@ -154,6 +154,7 @@
     padding: 0.4em;
     color: var(--textColor);
     border: 2px solid var(--textColor);
+    border-radius: 5px;
     outline: transparent;
 }
 .single-pro-details select:focus{

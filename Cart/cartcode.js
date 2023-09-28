@@ -4,8 +4,67 @@ window.onload = ()=>{
 }
 
 
-minusBtns = document.querySelectorAll('.minus');
-plusBtns = document.querySelectorAll('.plus');
+/****************** edit table *************/ /*https://www.tutorialspoint.com/How-to-add-rows-to-a-table-using-JavaScript-DOM#:~:text=the%20new%20Element-,Using%20the%20insertRow()%20Method,the%20position%20of%20the%20table.*/
+/***we will update the data of the table in updateStoredData***/
+let cartList = JSON.parse(localStorage.getItem("cartList"));
+let table = document.getElementsByClassName("cartTable-show")[0].getElementsByTagName("tbody")[0];
+let emptyBanner = document.getElementById("empty");
+
+if(cartList.length==0){
+    emptyBanner.setAttribute("visible",true);
+}
+
+cartList.forEach(cartItem =>{
+    let row = document.createElement("tr");
+
+    let c1 = document.createElement("td");
+    c1.innerHTML = `
+    <a><i class="fa-solid fa-circle-xmark"></i></a>
+    `;
+
+    let c2 = document.createElement("td");
+    c2.className ="proImg";
+    c2.innerHTML= `
+    <img src="${cartItem.img}"alt="">
+    `;
+
+    let c3 = document.createElement("td");
+    c3.className ="proName";
+    c3.innerHTML= cartItem.name;
+    
+    let c4 = document.createElement("td");
+    c4.className ="proPrice";
+    c4.innerHTML= "$"+cartItem.price;
+    
+    let c5 = document.createElement("td");
+    c5.innerHTML= `
+        <div class="quantityButton"> <!--https://www.youtube.com/watch?v=uliYkHK3pKg-->
+            <span class="minus">-</span>
+            <span class = 'quantityNumber'>${cartItem.num}</span>
+            <span class="plus">+</span>
+        </div>
+    `;
+    
+    let c6 =  document.createElement("td");
+    c6.className ="proTotalprice";
+    c6.innerHTML="$"+cartItem.total;
+
+    row.appendChild(c1);
+    row.appendChild(c2);
+    row.appendChild(c3);
+    row.appendChild(c4);
+    row.appendChild(c5);
+    row.appendChild(c6);
+
+    table.appendChild(row);
+
+
+});
+
+
+
+minusBtns = document.querySelectorAll('.cartSection .minus');
+plusBtns = document.querySelectorAll('.cartSection .plus');
 let quantityNum;
 
 minusBtns.forEach(minusBtn => {
@@ -13,8 +72,9 @@ minusBtns.forEach(minusBtn => {
         quantityNum = Number(minusBtn.parentElement.querySelector('.quantityNumber').innerHTML);
         (quantityNum>1)? quantityNum--:1;
         minusBtn.parentElement.querySelector('.quantityNumber').innerHTML = quantityNum;
-        minusBtn.parentElement.parentElement.parentElement.querySelector('.proTotalprice').innerHTML = quantityNum*Number( minusBtn.parentElement.parentElement.parentElement.querySelector('.proPrice').innerHTML.slice(1));
+        minusBtn.parentElement.parentElement.parentElement.querySelector('.proTotalprice').innerHTML = '$'+quantityNum*Number( minusBtn.parentElement.parentElement.parentElement.querySelector('.proPrice').innerHTML.slice(1));
         calculateTOTALPRICE();
+        updateStoredDataCart(minusBtn);
     });
 });
 
@@ -25,9 +85,32 @@ plusBtns.forEach(plusBtn => {
         plusBtn.parentElement.querySelector('.quantityNumber').innerHTML = quantityNum;
         plusBtn.parentElement.parentElement.parentElement.querySelector('.proTotalprice').innerHTML = '$'+quantityNum*Number( plusBtn.parentElement.parentElement.parentElement.querySelector('.proPrice').innerHTML.slice(1));
         calculateTOTALPRICE();
+        updateStoredDataCart(plusBtn);
     });
 });
 
+
+function updateStoredDataCart(Btn){
+    cartList.forEach(cartItem=>{
+        if(cartItem.name == Btn.parentElement.parentElement.parentElement.querySelector('.proName').innerHTML){
+            cartItem.total = Btn.parentElement.parentElement.parentElement.querySelector('.proTotalprice').innerHTML.slice(1);
+            cartItem.num =  Btn.parentElement.querySelector('.quantityNumber').innerHTML;
+            localStorage.setItem("cartList",JSON.stringify(cartList));
+        }
+    })
+}
+
+function deleteStoredDataCart(Btn){
+    cartList.forEach((cartItem,index)=>{
+        if(cartItem.name == Btn.closest('tr').querySelector('.proName').innerHTML){
+            cartList.splice(index,1);
+            localStorage.setItem("cartList",JSON.stringify(cartList));
+        }
+    })
+    if(cartList.length==0){
+        emptyBanner.setAttribute("visible",true);
+    }
+}
 
 
 /****** cart choice*****/
@@ -83,6 +166,7 @@ removeBtns.forEach(removeBtn=>{
     removeBtn.addEventListener('click',()=>{
         removeBtn.closest('tr').remove();  //https://bobbyhadz.com/blog/javascript-get-parent-element-by-class
         calculateTOTALPRICE();
+        deleteStoredDataCart(removeBtn);
     });
 });
 
@@ -117,8 +201,16 @@ function applyCoupon(){
 
 //move data to payment page
 function moveToPayment(){
-    localStorage.setItem("paymentData",JSON.stringify({subtotal:cart_subtotal.innerHTML, total:cart_total.innerHTML , couponPrice:couponText.innerHTML}));
-    window.location.href='payment.html';
+    if(cart_total.innerHTML.slice(1)=='0'){
+        console.log("cart is Empty");
+        popAlert.getElementsByTagName('p')[0].innerHTML='Add items to Cart';
+        popAlert.setAttribute("pop-show",true);
+    }
+    else{
+        localStorage.setItem("paymentData",JSON.stringify({subtotal:cart_subtotal.innerHTML, total:cart_total.innerHTML , couponPrice:couponText.innerHTML}));
+        window.location.href='payment.html';
+    }
+
 }
 
 

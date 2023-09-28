@@ -179,65 +179,71 @@ if(pageName=='Karma Fashion'){
 
     pro_imgs.forEach( (element) => {
         element.onmousedown = function(){
-            header.classList.toggle("blurred");
-            banner.classList.toggle("blurred");
-            features.classList.toggle("blurred");
-            products1.classList.toggle("blurred");
-            products2.classList.toggle("blurred");
-            callAction1.classList.toggle("blurred");
-            callActionBanners.classList.toggle("blurred");
-            productPreview.setAttribute("data-show",true);
-            header.style.pointerEvents="none"; /* to prevent user from clicking on it*/ /*https://www.w3schools.com/cssref/css3_pr_pointer-events.php*/
-            products1.style.pointerEvents="none";
-            products2.style.pointerEvents="none";
-            callAction1.style.pointerEvents="none";
-            callActionBanners.style.pointerEvents="none";
-            banner.style.pointerEvents="none";
-            productPreview.getElementsByTagName("img")[0].src=element.src;
-            body.classList.add("stop-scrolling");
+            // header.classList.toggle("blurred");
+            // banner.classList.toggle("blurred");
+            // features.classList.toggle("blurred");
+            // products1.classList.toggle("blurred");
+            // products2.classList.toggle("blurred");
+            // callAction1.classList.toggle("blurred");
+            // callActionBanners.classList.toggle("blurred");
+            // productPreview.setAttribute("data-show",true);
+            // header.style.pointerEvents="none"; /* to prevent user from clicking on it*/ /*https://www.w3schools.com/cssref/css3_pr_pointer-events.php*/
+            // products1.style.pointerEvents="none";
+            // products2.style.pointerEvents="none";
+            // callAction1.style.pointerEvents="none";
+            // callActionBanners.style.pointerEvents="none";
+            // banner.style.pointerEvents="none";
+            // productPreview.getElementsByTagName("img")[0].src=element.src;
+            // body.classList.add("stop-scrolling");
             
+            
+
+
         };
     
     });
     
-    function closePreview(){
-        productPreview.setAttribute("data-show",false);
-        header.classList.toggle("blurred");
-        banner.classList.toggle("blurred");
-        features.classList.toggle("blurred");
-        products1.classList.toggle("blurred");
-        products2.classList.toggle("blurred");
-        callAction1.classList.toggle("blurred");
-        callActionBanners.classList.toggle("blurred");
+    // function closePreview(){
+    //     productPreview.setAttribute("data-show",false);
+    //     header.classList.toggle("blurred");
+    //     banner.classList.toggle("blurred");
+    //     features.classList.toggle("blurred");
+    //     products1.classList.toggle("blurred");
+    //     products2.classList.toggle("blurred");
+    //     callAction1.classList.toggle("blurred");
+    //     callActionBanners.classList.toggle("blurred");
     
-        header.style.pointerEvents="auto";
-        products1.style.pointerEvents="auto";
-        banner.style.pointerEvents="auto";
-        products2.style.pointerEvents="auto";
-        callAction1.style.pointerEvents="auto";
-        callActionBanners.style.pointerEvents="auto";
-        body.classList.remove("stop-scrolling");
+    //     header.style.pointerEvents="auto";
+    //     products1.style.pointerEvents="auto";
+    //     banner.style.pointerEvents="auto";
+    //     products2.style.pointerEvents="auto";
+    //     callAction1.style.pointerEvents="auto";
+    //     callActionBanners.style.pointerEvents="auto";
+    //     body.classList.remove("stop-scrolling");
     
-    }
+    // }
 }
 
 
 if( signed ==true || signedState){
-    function addToCart(){
+    function addToCart(element){
         popAlert.getElementsByTagName('p')[0].innerHTML='this item has been added to cart <span>successfully!</span>';
         popAlert.setAttribute("pop-show",true);
+        console.log(element);
+        addToCartInShop(element);
     }
-    function addToWishList(){
+    function addToWishList(element){
         popAlert.getElementsByTagName('p')[0].innerHTML='this item has been added to wishList <span>successfully!</span>';
         popAlert.setAttribute("pop-show",true);
     }
 }
 else{
-    function addToCart(){
+    function addToCart(element){
         popAlert.getElementsByTagName('p')[0].innerHTML='Sign up/in first';
         popAlert.setAttribute("pop-show",true);
+
     }
-    function addToWishList(){
+    function addToWishList(element){
         popAlert.getElementsByTagName('p')[0].innerHTML='Sign up/in first';
         popAlert.setAttribute("pop-show",true);
     }
@@ -262,3 +268,34 @@ moneyAnimYoyo.restart();
 sellAnim.restart();
 promoAnim.restart();
 supportAnim.restart();
+
+
+/******************  quantity button  ****************/
+
+
+mainMinusBtns = document.querySelectorAll('.price_NumberContainer .minus');
+mainPlusBtns = document.querySelectorAll('.price_NumberContainer .plus');
+let mainquantityNum;
+
+mainMinusBtns.forEach(minusBtn => {
+    minusBtn.addEventListener('click',()=>{
+        let price =  Number(minusBtn.parentElement.parentElement.querySelector('.proPrice').getAttribute("value"));
+        mainquantityNum = Number(minusBtn.parentElement.querySelector('.quantityNumber').innerHTML);
+        (mainquantityNum>1)? mainquantityNum--:1;
+        minusBtn.parentElement.querySelector('.quantityNumber').innerHTML = mainquantityNum;
+        minusBtn.parentElement.parentElement.querySelector('.proPrice').innerHTML = '$'+mainquantityNum*price;
+    });
+});
+
+mainPlusBtns.forEach(plusBtn => {
+    plusBtn.addEventListener('click',()=>{
+        let price =  Number(plusBtn.parentElement.parentElement.querySelector('.proPrice').getAttribute("value"));
+        mainquantityNum = Number(plusBtn.parentElement.querySelector('.quantityNumber').innerHTML);
+        (mainquantityNum<30)? mainquantityNum++:30;
+        plusBtn.parentElement.querySelector('.quantityNumber').innerHTML = mainquantityNum;
+        plusBtn.parentElement.parentElement.querySelector('.proPrice').innerHTML = '$'+mainquantityNum*price;
+    });
+});
+
+
+

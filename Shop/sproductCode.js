@@ -1,6 +1,6 @@
 
-productName = document.getElementById('proName');
-productPrice = document.getElementById('proPrice');
+prodName = document.getElementById('proName');
+prodPrice = document.getElementById('proPrice');
 
 
 
@@ -19,14 +19,32 @@ function changeMainImg(img){
 
 /************** recive data from shop page **********/ /* https://www.youtube.com/watch?v=x0VcigW9kN0*/
 
-let productData =JSON.parse(localStorage.getItem("myProduct"));
-mainImg.src= productData.img;
-productName.innerHTML=productData.name;
-productPrice.innerHTML=productData.price;
+let prodData =JSON.parse(localStorage.getItem("myProduct"));
+mainImg.src= prodData.img;
+prodName.innerHTML=prodData.name;
+prodPrice.innerHTML=prodData.price;
 
 
 
+function addToCartInSproduct(element){
+    productName =prodName.innerHTML;
+    productImg = mainImg.src;
+    productPrice = prodPrice.innerHTML.slice(1);
+    productNum = element.parentNode.querySelector(".proNum").value;
+    productTotalPrice =  productNum*Number(productPrice);
 
+    let productData = {
+        img:productImg,
+        name:productName,
+        price:productPrice,
+        num: productNum , 
+        total : productTotalPrice
+    }
+
+    existing.push(productData);
+    console.log(existing);
+    localStorage.setItem("cartList",JSON.stringify(existing));
+}
 
 /*************** User Reviews **************/
 

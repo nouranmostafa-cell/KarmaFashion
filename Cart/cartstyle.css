@@ -522,3 +522,20 @@ user-select: none;
         width: 100%;
     }
 }
+
+
+/************* Empty cart **********/
+
+#empty[visible=false]{
+    display: none;
+}
+#empty[visible=true]{
+    display: block;
+}
+#empty h1{
+    text-align: center; 
+    color: var(--HeaderColor);
+    background-color: var(--textColor);
+    padding: 1em;
+    margin: 0em 1em 1em;
+}

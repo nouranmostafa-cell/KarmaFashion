@@ -470,6 +470,42 @@ header{
     transition: all 0.3s ease-in;
 }
 
+.price_NumberContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1em;
+}
+
+.price_NumberContainer .quantityButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--HeaderColor);
+    border-radius: 10px;
+    user-select: none;
+    width: 30%;
+    text-align: center;
+}
+
+.price_NumberContainer .quantityButton span{
+    text-align: center;
+    font-weight: bolder;
+    padding: 0em 0.2em;
+    font-size: 1.5em !important;
+    color:var(--textColor) !important;
+}
+.price_NumberContainer .quantityButton .minus{
+    color:var(--textColor) !important;
+    border-right: 2px solid white;
+    cursor: pointer;
+}
+.price_NumberContainer .quantityButton .plus{
+    color:var(--textColor) !important;
+    border-left: 2px solid white;
+    cursor: pointer;
+}
+
 
 /***************** pop up feature product *************/
 

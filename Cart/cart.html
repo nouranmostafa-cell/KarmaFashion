@@ -91,34 +91,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <td><a><i class="fa-solid fa-circle-xmark"></i></a></td>
                     <td class="proImg"><img src="images/background.jpg"alt=""></td>
                     <td class="proName">Adidas</td>
                     <td class="proPrice">$12.5</td>
                     <td>
-                        <div class="quantityButton"> <!--https://www.youtube.com/watch?v=uliYkHK3pKg-->
-                            <span class="minus">-</span>
+                        <div class="quantityButton"> https://www.youtube.com/watch?v=uliYkHK3pKg-->
+                            <!-- <span class="minus">-</span>
                             <span class = 'quantityNumber'>1</span>
                             <span class="plus">+</span>
                         </div>
                     </td>
                     <td class="proTotalprice">$12.5</td>
-                </tr>
-                <tr>
-                    <td><a><i class="fa-solid fa-circle-xmark"></i></a></td>
-                    <td class="proImg"><img src="images/background.jpg"alt=""></td>
-                    <td  class="proName">Adidas</td>
-                    <td class="proPrice">$132.5</td>
-                    <td>
-                        <div class="quantityButton"> <!--https://www.youtube.com/watch?v=uliYkHK3pKg-->
-                            <span class="minus">-</span>
-                            <span class = 'quantityNumber'>1</span>
-                            <span class="plus">+</span>
-                        </div>
-                    </td>
-                    <td class="proTotalprice">$132.5</td>
-                </tr>
+                </tr> -->
+            
             </tbody>
         </table>
     </section>
@@ -180,6 +167,9 @@
             </tbody>
         </table>
     </section>
+    <div id="empty"visible="false">
+        <h1>Your Cart is Empty</h1>
+    </div>
 
     <section id="cart-add">
         <div id="coupon">
@@ -194,7 +184,7 @@
             <table>
                 <tr>
                     <td>Cart Subtotal</td>
-                    <td id="subtotalPrice">$200</td>
+                    <td id="subtotalPrice">$0</td>
                 </tr>
                 <tr>
                     <td>Coupon</td>
@@ -206,7 +196,7 @@
                 </tr>
                 <tr id="totalRow">
                     <td>Total</td>
-                    <td id="totalPrice">$200</td>
+                    <td id="totalPrice">$0</td>
                 </tr>
             </table>
             <button onclick="moveToPayment()">Proceed to checkout</button>
@@ -286,6 +276,11 @@
         </div>
 
     </footer>
+
+    
+    <div class="popup"pop-show="false"> <!--pop up when clicking on Add to cart--> <!--https://stackoverflow.com/questions/45398472/show-display-pop-ups-for-some-second-after-some-second-it-will-be-automaticall-->
+        <p>this item has been added to cart <span>successfully!</span></p>
+    </div>
 
 </body>
 </html>
