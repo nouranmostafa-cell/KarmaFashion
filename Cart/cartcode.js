@@ -10,7 +10,7 @@ let cartList = JSON.parse(localStorage.getItem("cartList"));
 let table = document.getElementsByClassName("cartTable-show")[0].getElementsByTagName("tbody")[0];
 let emptyBanner = document.getElementById("empty");
 
-if(cartList.length==0||cartList==null){
+if(cartList==null||cartList.length==0){
     emptyBanner.setAttribute("visible",true);
 }
 
