@@ -80,12 +80,13 @@ existingWish = existingWish? JSON.parse(existingWish): [];
 
 
 function addToWishInShop(element){
-    let itemExists = false;
 
     if(element.parentElement.className=="single-pro-details"){
         addToWishInSproduct(element);
     }
     else{
+        let itemExists = false;
+
         /* to check if the clicked item is already in the cart list and if it exists update the data in it*/
         existingWish.forEach(cartItem=>{
             if(cartItem.name ==  element.parentNode.parentNode.querySelector("#shopTitle").innerHTML){

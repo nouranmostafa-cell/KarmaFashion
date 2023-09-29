@@ -624,7 +624,7 @@ header{
 
 .popup[pop-show=true]{
 
-    animation: hide 2s forwards 1s; /*forwards : The element will retain the style values that is set by the last keyframe*/
+    animation: hide 0.5s forwards 0.5s; /*forwards : The element will retain the style values that is set by the last keyframe*/
 
     position: fixed;
     top: 10%;
