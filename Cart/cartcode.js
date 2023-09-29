@@ -20,6 +20,7 @@ let table = document.getElementsByClassName("cartTable-show")[0].getElementsByTa
 let emptyBanner = document.getElementById("empty");
 
 if(cartList==null||cartList.length==0){
+    cartList=[];
     emptyBanner.setAttribute("visible",true);
     emptyBanner.querySelector("h1").innerHTML="your cart is Empty";
 }
@@ -76,9 +77,8 @@ cartList.forEach(cartItem =>{
 let wishList = JSON.parse(localStorage.getItem("wishList"));
 let wishtable = document.getElementsByClassName("wishTable")[0].getElementsByTagName("tbody")[0];
 
-if(cartList==null||cartList.length==0){
-    emptyBanner.setAttribute("visible",true);
-    emptyBanner.querySelector("h1").innerHTML="your cart is Empty";
+if(wishList==null||wishList.length==0){
+    wishList=[];
 }
 
 
