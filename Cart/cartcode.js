@@ -4,7 +4,7 @@ window.onload = ()=>{
 }
 
 
-/****************** edit table *************/ /*https://www.tutorialspoint.com/How-to-add-rows-to-a-table-using-JavaScript-DOM#:~:text=the%20new%20Element-,Using%20the%20insertRow()%20Method,the%20position%20of%20the%20table.*/
+/****************** edit cart table *************/ /*https://www.tutorialspoint.com/How-to-add-rows-to-a-table-using-JavaScript-DOM#:~:text=the%20new%20Element-,Using%20the%20insertRow()%20Method,the%20position%20of%20the%20table.*/
 /***we will update the data of the table in updateStoredData***/
 let cartList = JSON.parse(localStorage.getItem("cartList"));
 let table = document.getElementsByClassName("cartTable-show")[0].getElementsByTagName("tbody")[0];
@@ -12,6 +12,7 @@ let emptyBanner = document.getElementById("empty");
 
 if(cartList==null||cartList.length==0){
     emptyBanner.setAttribute("visible",true);
+    emptyBanner.querySelector("h1").innerHTML="your cart is Empty";
 }
 
 cartList.forEach(cartItem =>{
@@ -61,6 +62,62 @@ cartList.forEach(cartItem =>{
 
 });
 
+/*************** edit wish table *************/
+/***we will update the data of the table in updateStoredData***/
+let wishList = JSON.parse(localStorage.getItem("wishList"));
+let wishtable = document.getElementsByClassName("wishTable")[0].getElementsByTagName("tbody")[0];
+
+
+wishList.forEach(wishItem =>{
+    let row = document.createElement("tr");
+
+    let c1 = document.createElement("td");
+    c1.innerHTML = `
+    <a><i class="fa-solid fa-circle-xmark"></i></a>
+    `;
+
+    let c2 = document.createElement("td");
+    c2.className ="proImg";
+    c2.innerHTML= `
+    <img src="${wishItem.img}"alt="">
+    `;
+
+    let c3 = document.createElement("td");
+    c3.className ="proName";
+    c3.innerHTML= wishItem.name;
+    
+    let c4 = document.createElement("td");
+    c4.className ="proPrice";
+    c4.innerHTML= "$"+wishItem.price;
+    
+    let c5 = document.createElement("td");
+    c5.innerHTML= `
+        <div class="quantityButton"> <!--https://www.youtube.com/watch?v=uliYkHK3pKg-->
+            <span class="minus">-</span>
+            <span class = 'quantityNumber'>${wishItem.num}</span>
+            <span class="plus">+</span>
+        </div>
+    `;
+    
+    let c6 =  document.createElement("td");
+    c6.className ="proTotalprice";
+    c6.innerHTML="$"+wishItem.total;
+
+    row.appendChild(c1);
+    row.appendChild(c2);
+    row.appendChild(c3);
+    row.appendChild(c4);
+    row.appendChild(c5);
+    row.appendChild(c6);
+
+    wishtable.appendChild(row);
+
+
+});
+
+
+
+
 
 
 minusBtns = document.querySelectorAll('.cartSection .minus');
@@ -74,7 +131,12 @@ minusBtns.forEach(minusBtn => {
         minusBtn.parentElement.querySelector('.quantityNumber').innerHTML = quantityNum;
         minusBtn.parentElement.parentElement.parentElement.querySelector('.proTotalprice').innerHTML = '$'+quantityNum*Number( minusBtn.parentElement.parentElement.parentElement.querySelector('.proPrice').innerHTML.slice(1));
         calculateTOTALPRICE();
-        updateStoredDataCart(minusBtn);
+        if(minusBtn.closest("section").className=='cartSection cartTable-show'){
+            updateStoredDataCart(minusBtn,cartList,"cartList");
+        }
+        else{
+            updateStoredDataCart(minusBtn,wishList,"wishList");
+        }
     });
 });
 
@@ -85,30 +147,41 @@ plusBtns.forEach(plusBtn => {
         plusBtn.parentElement.querySelector('.quantityNumber').innerHTML = quantityNum;
         plusBtn.parentElement.parentElement.parentElement.querySelector('.proTotalprice').innerHTML = '$'+quantityNum*Number( plusBtn.parentElement.parentElement.parentElement.querySelector('.proPrice').innerHTML.slice(1));
         calculateTOTALPRICE();
-        updateStoredDataCart(plusBtn);
+        if(plusBtn.closest("section").className=='cartSection cartTable-show'){
+            updateStoredDataCart(plusBtn,cartList,"cartList");
+        }
+        else{
+            updateStoredDataCart(plusBtn,wishList,"wishList");
+        }
     });
 });
 
 
-function updateStoredDataCart(Btn){
-    cartList.forEach(cartItem=>{
+function updateStoredDataCart(Btn,list,typeList){
+    list.forEach(cartItem=>{
         if(cartItem.name == Btn.parentElement.parentElement.parentElement.querySelector('.proName').innerHTML){
             cartItem.total = Btn.parentElement.parentElement.parentElement.querySelector('.proTotalprice').innerHTML.slice(1);
             cartItem.num =  Btn.parentElement.querySelector('.quantityNumber').innerHTML;
-            localStorage.setItem("cartList",JSON.stringify(cartList));
+            localStorage.setItem(typeList,JSON.stringify(list));
         }
     })
 }
 
-function deleteStoredDataCart(Btn){
-    cartList.forEach((cartItem,index)=>{
+function deleteStoredDataCart(Btn,list,typeList){
+    list.forEach((cartItem,index)=>{
         if(cartItem.name == Btn.closest('tr').querySelector('.proName').innerHTML){
-            cartList.splice(index,1);
-            localStorage.setItem("cartList",JSON.stringify(cartList));
+            list.splice(index,1);
+            localStorage.setItem(typeList,JSON.stringify(list));
         }
     })
-    if(cartList.length==0){
-        emptyBanner.setAttribute("visible",true);
+    if(list.length==0){
+        emptyBanner.setAttribute("visible",true); 
+        if(typeList=="wishList"){
+            emptyBanner.querySelector("h1").innerHTML="your Wishcart is Empty";
+        }
+        else{
+            emptyBanner.querySelector("h1").innerHTML="your Cart is Empty";
+        }
     }
 }
 
@@ -143,13 +216,24 @@ function showTable(){
     if(ChoiceCartName.innerHTML =="My Cart"){
         cartTable.className='cartSection cartTable-show';
         wishTable.className='cartSection wishTable';
+        emptyBanner.setAttribute("visible",false); 
         activeTable = cartTable;
+        if(cartList.length==0){
+            emptyBanner.setAttribute("visible",true); 
+            emptyBanner.querySelector("h1").innerHTML="your Cart is Empty";
+        }
         calculateTOTALPRICE();
         clickImgs();
     }
     else{
         cartTable.className='cartSection cartTable';
         wishTable.className='cartSection wishTable-show';
+        emptyBanner.setAttribute("visible",false); 
+        if(wishList.length==0){
+            console.log("ee");
+            emptyBanner.querySelector("h1").innerHTML="your wishCart is Empty";
+            emptyBanner.setAttribute("visible",true); 
+        }
         activeTable=wishTable;
         calculateTOTALPRICE();
         clickImgs();
@@ -164,9 +248,15 @@ let removeBtns = document.querySelectorAll('.fa-circle-xmark');
 
 removeBtns.forEach(removeBtn=>{
     removeBtn.addEventListener('click',()=>{
-        removeBtn.closest('tr').remove();  //https://bobbyhadz.com/blog/javascript-get-parent-element-by-class
         calculateTOTALPRICE();
-        deleteStoredDataCart(removeBtn);
+        if(removeBtn.closest("section").className=='cartSection cartTable-show'){
+            deleteStoredDataCart(removeBtn,cartList,"cartList");
+        }
+        else{
+            deleteStoredDataCart(removeBtn,wishList,"wishList");
+        }
+        removeBtn.closest('tr').remove();  //https://bobbyhadz.com/blog/javascript-get-parent-element-by-class
+
     });
 });
 

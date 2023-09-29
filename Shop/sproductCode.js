@@ -27,24 +27,75 @@ prodPrice.innerHTML=prodData.price;
 
 
 function addToCartInSproduct(element){
-    productName =prodName.innerHTML;
-    productImg = mainImg.src;
-    productPrice = prodPrice.innerHTML.slice(1);
-    productNum = element.parentNode.querySelector(".proNum").value;
-    productTotalPrice =  productNum*Number(productPrice);
 
-    let productData = {
-        img:productImg,
-        name:productName,
-        price:productPrice,
-        num: productNum , 
-        total : productTotalPrice
+    /* to check if the clicked item is already in the cart list and if it exists update the data in it*/
+    existing.forEach(cartItem=>{
+        if(cartItem.name ==  prodName.innerHTML){
+            cartItem.total =  Number(cartItem.total)+ element.parentNode.querySelector(".proNum").value*Number(prodPrice.innerHTML.slice(1)) ;
+            cartItem.num =  Number(cartItem.num) + Number(element.parentNode.querySelector(".proNum").value) ;
+            localStorage.setItem("cartList",JSON.stringify(existing));
+            itemExists = true;
+        }
+    })
+
+    if(!itemExists){
+        productName =prodName.innerHTML;
+        productImg = mainImg.src;
+        productPrice = prodPrice.innerHTML.slice(1);
+        productNum = element.parentNode.querySelector(".proNum").value;
+        productTotalPrice =  productNum*Number(productPrice);
+    
+        let productData = {
+            img:productImg,
+            name:productName,
+            price:productPrice,
+            num: productNum , 
+            total : productTotalPrice
+        }
+    
+        existing.push(productData);
+        console.log(existing);
+        localStorage.setItem("cartList",JSON.stringify(existing));
     }
 
-    existing.push(productData);
-    console.log(existing);
-    localStorage.setItem("cartList",JSON.stringify(existing));
 }
+
+
+function addToWishInSproduct(element){
+
+    /* to check if the clicked item is already in the cart list and if it exists update the data in it*/
+    existingWish.forEach(cartItem=>{
+        if(cartItem.name ==  prodName.innerHTML){
+            cartItem.total =  Number(cartItem.total)+ element.parentNode.querySelector(".proNum").value*Number(prodPrice.innerHTML.slice(1)) ;
+            cartItem.num =  Number(cartItem.num) + Number(element.parentNode.querySelector(".proNum").value) ;
+            localStorage.setItem("wishList",JSON.stringify(existingWish));
+            itemExists = true;
+        }
+    })
+
+    if(!itemExists){
+        productName =prodName.innerHTML;
+        productImg = mainImg.src;
+        productPrice = prodPrice.innerHTML.slice(1);
+        productNum = element.parentNode.querySelector(".proNum").value;
+        productTotalPrice =  productNum*Number(productPrice);
+    
+        let productData = {
+            img:productImg,
+            name:productName,
+            price:productPrice,
+            num: productNum , 
+            total : productTotalPrice
+        }
+    
+        existingWish.push(productData);
+        console.log(existing);
+        localStorage.setItem("wishList",JSON.stringify(existingWish));
+    }
+
+}
+
+
 
 /*************** User Reviews **************/
 

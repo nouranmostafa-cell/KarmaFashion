@@ -235,6 +235,8 @@ if( signed ==true || signedState){
     function addToWishList(element){
         popAlert.getElementsByTagName('p')[0].innerHTML='this item has been added to wishList <span>successfully!</span>';
         popAlert.setAttribute("pop-show",true);
+        addToWishInShop(element);
+
     }
 }
 else{
