@@ -255,7 +255,6 @@ let removeBtns = document.querySelectorAll('.fa-circle-xmark');
 
 removeBtns.forEach(removeBtn=>{
     removeBtn.addEventListener('click',()=>{
-        calculateTOTALPRICE();
         if(removeBtn.closest("section").className=='cartSection cartTable-show'){
             deleteStoredDataCart(removeBtn,cartList,"cartList");
         }
@@ -263,6 +262,7 @@ removeBtns.forEach(removeBtn=>{
             deleteStoredDataCart(removeBtn,wishList,"wishList");
         }
         removeBtn.closest('tr').remove();  //https://bobbyhadz.com/blog/javascript-get-parent-element-by-class
+        calculateTOTALPRICE();
 
     });
 });
