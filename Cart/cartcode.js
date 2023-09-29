@@ -4,6 +4,15 @@ window.onload = ()=>{
 }
 
 
+let ChoiceCartName = document.getElementById('ChoiceCartName');
+let selected = document.getElementsByClassName('selected')[0];
+let caret = document.getElementsByClassName('caret')[0];
+let menu = document.getElementsByClassName('menu')[0];
+const options = menu.querySelectorAll('li');
+let cartTable = document.getElementsByClassName('cartTable-show')[0];
+let wishTable= document.getElementsByClassName('wishTable')[0];
+let activeTable =cartTable ;
+
 /****************** edit cart table *************/ /*https://www.tutorialspoint.com/How-to-add-rows-to-a-table-using-JavaScript-DOM#:~:text=the%20new%20Element-,Using%20the%20insertRow()%20Method,the%20position%20of%20the%20table.*/
 /***we will update the data of the table in updateStoredData***/
 let cartList = JSON.parse(localStorage.getItem("cartList"));
@@ -66,6 +75,11 @@ cartList.forEach(cartItem =>{
 /***we will update the data of the table in updateStoredData***/
 let wishList = JSON.parse(localStorage.getItem("wishList"));
 let wishtable = document.getElementsByClassName("wishTable")[0].getElementsByTagName("tbody")[0];
+
+if(cartList==null||cartList.length==0){
+    emptyBanner.setAttribute("visible",true);
+    emptyBanner.querySelector("h1").innerHTML="your cart is Empty";
+}
 
 
 wishList.forEach(wishItem =>{
@@ -188,14 +202,7 @@ function deleteStoredDataCart(Btn,list,typeList){
 
 /****** cart choice*****/
 
-let ChoiceCartName = document.getElementById('ChoiceCartName');
-let selected = document.getElementsByClassName('selected')[0];
-let caret = document.getElementsByClassName('caret')[0];
-let menu = document.getElementsByClassName('menu')[0];
-const options = menu.querySelectorAll('li');
-let cartTable = document.getElementsByClassName('cartTable-show')[0];
-let wishTable= document.getElementsByClassName('wishTable')[0];
-let activeTable =cartTable ;
+
 
 caret.addEventListener('click',()=>{
     caret.classList.toggle('caret-rotate');
