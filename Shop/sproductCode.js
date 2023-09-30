@@ -65,6 +65,7 @@ function addToCartInSproduct(element){
 
 function addToWishInSproduct(element){
 
+    let itemExists = false;
     /* to check if the clicked item is already in the cart list and if it exists update the data in it*/
     existingWish.forEach(cartItem=>{
         if(cartItem.name ==  prodName.innerHTML){
